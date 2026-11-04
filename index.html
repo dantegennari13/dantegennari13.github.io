@@ -159,6 +159,7 @@ p{margin:0}
 .edu .yr{font-family:var(--f-mono); font-size:.8rem; color:var(--muted)}
 .edu h3{font-size:1.04rem; font-weight:700}
 .edu .inst{color:var(--muted); font-size:.92rem}
+.edu.cert{border-color:color-mix(in srgb, var(--brand) 45%, var(--line)); background:var(--brand-soft)}
 .edu.featured{grid-column:1 / -1; background:var(--navy); border-color:var(--navy); color:var(--navy-ink); padding:1.75rem}
 .edu.featured .yr,.edu.featured .inst{color:color-mix(in srgb, var(--navy-ink) 70%, transparent)}
 .edu.featured h3{font-size:1.35rem}
@@ -175,6 +176,7 @@ p{margin:0}
 .chips{list-style:none; padding:0; margin:.75rem 0 0; display:flex; flex-wrap:wrap; gap:.45rem}
 .chips li{padding:.45rem .8rem; border-radius:8px; border:1px solid var(--line); background:var(--bg); font-size:.88rem; font-weight:500; max-width:100%; overflow-wrap:anywhere}
 .chips.brand li{background:var(--brand-soft); border-color:transparent}
+.chips.brand li.cert-chip{background:var(--brand); color:var(--brand-ink); font-weight:600}
 .langs{padding:1.4rem; border:1px solid var(--line); border-radius:14px; background:var(--bg)}
 .lang + .lang{margin-top:1.1rem}
 .lang .row{display:flex; justify-content:space-between; font-weight:600; font-size:.95rem}
@@ -292,6 +294,7 @@ footer{padding-block:0 2.5rem; color:var(--muted); font-size:.85rem}
     {when:'2010 – 2013', loc:'São Paulo', title:'Vendedor · sección TRF', org:'Zara Brasil', cat:['client'], items:['Atención al cliente y ventas en tienda de centro comercial de alta gama, con asesoramiento personalizado.']}
   ];
   var EDU = [
+    {yr:'2026', t:'SAP Certified – Joule Studio Developer', i:'SAP · Certificación oficial', cert:true},
     {yr:'2022 – 2024', t:'FP Desarrollo de Aplicaciones Multiplataforma', i:'Universidad Europea de Madrid'},
     {yr:'2013 – 2014', t:'Fotografía Profesional', i:'EFTI, Madrid'},
     {yr:'2010 – 2012', t:'Diplomado en Cine, especialidad en Fotografía Cinematográfica', i:'Academia Internacional de Cinema, São Paulo'},
@@ -304,7 +307,7 @@ footer{padding-block:0 2.5rem; color:var(--muted); font-size:.85rem}
     {id:'quien-soy', label:'Quién soy', kick:'Perfil', title:'Procesos, tecnología y personas', html:function(){ return ''+
       '<div class="who"><div class="txt">'+
         '<p>Empecé en el cine y la fotografía, trabajé años produciendo contenido audiovisual para clientes y para la Universidade de São Paulo, y después me formé como desarrollador de aplicaciones multiplataforma.</p>'+
-        '<p>Hoy curso el Máster en Gestión de Proyectos Logísticos SAP en la Universidad Rey Juan Carlos, con formación en SAP S/4HANA, minería de procesos e IA generativa aplicada a SAP.</p>'+
+        '<p>Hoy curso el Máster en Gestión de Proyectos Logísticos SAP en la Universidad Rey Juan Carlos, con formación en SAP S/4HANA, minería de procesos e IA generativa aplicada a SAP. Además, tengo la certificación oficial <strong>SAP Certified – Joule Studio Developer</strong>.</p>'+
         '<p>Me interesa el punto donde se encuentran los procesos de negocio, los sistemas que los soportan y las personas que trabajan con ellos.</p>'+
       '</div><div class="caps">'+
         '<div class="cap"><span class="ic">'+ic('truck')+'</span><div><h3>Logística y SAP</h3><p>Procesos integrados en S/4HANA: ventas, compras y aprovisionamiento. Análisis con Signavio y Celonis.</p></div></div>'+
@@ -329,11 +332,11 @@ footer{padding-block:0 2.5rem; color:var(--muted); font-size:.85rem}
       '<div class="edu-grid"><article class="edu featured"><span class="yr">Oct 2026 – Jun 2027</span>'+
       '<h3>Máster en Gestión de Proyectos Logísticos SAP (MPLSAP)</h3><span class="inst">Universidad Rey Juan Carlos</span>'+
       '<div class="progress"><div class="track"><div class="fill" data-w="'+pct+'"></div></div><div class="row"><span>'+(pct>=100?'Completado':'En curso · '+pct+'%')+'</span><span>Fin: junio 2027</span></div></div></article>'+
-      EDU.map(function(e){ return '<article class="edu"><span class="yr">'+e.yr+'</span><h3>'+e.t+'</h3><span class="inst">'+e.i+'</span></article>'; }).join('')+
+      EDU.map(function(e){ return '<article class="edu'+(e.cert?' cert':'')+'"><span class="yr">'+e.yr+(e.cert?'<span class="status">Certificado</span>':'')+'</span><h3>'+e.t+'</h3><span class="inst">'+e.i+'</span></article>'; }).join('')+
       '</div>'; }},
     {id:'competencias', label:'Competencias', kick:'Herramientas', title:'Herramientas e idiomas', html:function(){ return ''+
       '<div class="skills"><div>'+
-        '<div class="grp"><h3>SAP y procesos de negocio</h3><ul class="chips brand"><li>Integrated Business Processes in SAP S/4HANA</li><li>SAP S/4HANA Sales</li><li>SAP S/4HANA Sourcing and Procurement</li><li>SAP Signavio</li><li>Celonis</li><li>SAP Joule</li></ul></div>'+
+        '<div class="grp"><h3>SAP y procesos de negocio</h3><ul class="chips brand"><li class="cert-chip">✓ SAP Certified – Joule Studio Developer</li><li>Integrated Business Processes in SAP S/4HANA</li><li>SAP S/4HANA Sales</li><li>SAP S/4HANA Sourcing and Procurement</li><li>SAP Signavio</li><li>Celonis</li><li>SAP Joule</li></ul></div>'+
         '<div class="grp"><h3>Inteligencia artificial</h3><ul class="chips"><li>IA generativa aplicada a SAP</li><li>Claude</li><li>Microsoft Copilot</li><li>ChatGPT</li></ul></div>'+
       '</div><div class="langs"><h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">Idiomas</h3>'+
         [['Portugués','Nativo',100],['Castellano','Bilingüe',100],['Inglés','Avanzado',80]].map(function(l){ return '<div class="lang"><div class="row"><span>'+l[0]+'</span><span>'+l[1]+'</span></div><div class="track"><div class="fill" data-w="'+l[2]+'"></div></div></div>'; }).join('')+
@@ -466,14 +469,36 @@ footer{padding-block:0 2.5rem; color:var(--muted); font-size:.85rem}
       btn.disabled = true; out.textContent = 'Enviando…';
       var data = { nombre:name.value.trim(), empresa:form.empresa.value.trim(), email:mail.value.trim(), mensaje:msg.value.trim(),
                    _subject:'Nuevo contacto desde tu web: ' + name.value.trim(), _replyto:mail.value.trim(), _template:'table' };
+      /* Envío clásico (sin JavaScript de red): más compatible; FormSubmit vuelve a esta web al terminar */
+      function nativeSubmit(){
+        var f = document.createElement('form');
+        f.method = 'POST'; f.action = 'https://formsubmit.co/' + CONTACT_EMAIL; f.style.display = 'none';
+        var extra = { _next: location.origin + location.pathname + '?enviado=1#contacto', _captcha: 'false' };
+        Object.keys(data).concat(Object.keys(extra)).forEach(function(k){
+          var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = (k in extra ? extra[k] : data[k]); f.appendChild(i);
+        });
+        document.body.appendChild(f); f.submit();
+      }
       fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, { method:'POST', headers:{ 'Content-Type':'application/json', 'Accept':'application/json' }, body:JSON.stringify(data) })
-        .then(function(r){ return r.json().then(function(j){ if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'error'); }); })
-        .then(function(){ form.reset(); out.classList.add('ok'); out.textContent = 'Mensaje enviado. Te responderé pronto.'; })
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { ok:r.ok, j:j }; }); })
+        .then(function(res){
+          var j = res.j || {};
+          if (res.ok && String(j.success) !== 'false'){ form.reset(); out.classList.add('ok'); out.textContent = 'Mensaje enviado. Te responderé pronto.'; btn.disabled = false; return; }
+          var m = String(j.message || '');
+          if (/activat/i.test(m)){
+            out.classList.add('err');
+            out.textContent = 'El formulario está pendiente de activación. Revisa el correo de ' + CONTACT_EMAIL + ' (también en spam) y pulsa «Activate Form».';
+            btn.disabled = false; return;
+          }
+          nativeSubmit();
+        })
         .catch(function(){
+          /* La petición no llegó (red o bloqueo): probamos el envío clásico */
+          if (location.protocol.indexOf('http') === 0 && !/claude|claudeusercontent/.test(location.hostname)) { nativeSubmit(); return; }
           out.classList.add('err');
           out.textContent = 'No se pudo enviar desde aquí. Escríbeme directamente a ' + CONTACT_EMAIL + '.';
-        })
-        .then(function(){ btn.disabled = false; });
+          btn.disabled = false;
+        });
     });
     var cp = $('#copy-mail', inner);
     if (cp) cp.addEventListener('click', function(){
@@ -484,7 +509,7 @@ footer{padding-block:0 2.5rem; color:var(--muted); font-size:.85rem}
   }
 
   /* Rol rotativo */
-  var roles = ['Gestión de proyectos logísticos SAP','Procesos de negocio en S/4HANA','Desarrollo de aplicaciones','Comunicación y atención al cliente'];
+  var roles = ['Gestión de proyectos logísticos SAP','SAP Certified – Joule Studio Developer','Procesos de negocio en S/4HANA','Desarrollo de aplicaciones','Comunicación y atención al cliente'];
   var rot = $('#rot');
   if (!reduce){
     var ri = 0, ch = roles[0].length, del = false;
@@ -508,9 +533,15 @@ footer{padding-block:0 2.5rem; color:var(--muted); font-size:.85rem}
 
   /* Arranque: abre la sección del enlace o "Quién soy" */
   layout();
+  var sent = /[?&]enviado=1/.test(location.search);
   var h = (location.hash || '').slice(1);
   var startIdx = Math.max(0, SECTIONS.findIndex(function(s){ return s.id === h; }));
   open(startIdx, false);
+  if (sent){
+    if (SECTIONS[startIdx].id !== 'contacto') go('contacto', false);
+    setTimeout(function(){ show('Mensaje enviado. Te responderé pronto.'); }, 400);
+    try { history.replaceState(null, '', location.pathname + '#contacto'); } catch(e){}
+  }
   window.addEventListener('hashchange', function(){ go(location.hash.slice(1), false); });
   setTimeout(function(){ stage.classList.remove('intro'); }, 1400);
   $('#year').textContent = new Date().getFullYear();
